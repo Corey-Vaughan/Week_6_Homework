@@ -1,0 +1,32 @@
+body {
+	background-color: lightgrey;
+}
+
+.gifDiv {
+	float: left;
+	margin: 10px;
+}
+
+img {
+	height: 180px;
+	width: 180px;
+}
+
+.btn-success {
+	margin: 10px;
+}
+
+#footer {
+	clear: both;
+	text-align: center;
+	margin-top: 5%;
+}
+
+h4 {
+	color: indigo;
+}
+
+.jumbotron {
+	background-color: indigo;
+	color: white;
+}
