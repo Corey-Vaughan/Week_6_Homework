@@ -18,8 +18,8 @@ $(document).ready(function() {
     function addNewButton() {
         $("#addNewGif").on("click", function() {
             var newItem = $("#inputLarge").val().trim();
+          	// Prevent user from adding blank button
             if (newItem == "") {
-            	// added so user cannot add a blank button
                 return false; 
             }
             starterItems.push(newItem);
@@ -33,28 +33,30 @@ $(document).ready(function() {
     function displayGifs() {
         var item = $(this).attr("data-name");
         var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + item + "&api_key=HYCdJ50ZyaNW8DSRW0IfTD10ovnLxp8W&limit=10";
-        console.log(queryURL); // displays the constructed url
+        // Console log to make sure its completing the queryUrl with the search item
+        console.log(queryURL); 
         $.ajax({
                 url: queryURL,
                 method: "GET"
             }).done(function(response) {
-            	// console log to make sure something returns
+            	// console log to make sure the JSON object returns
                 console.log(response); 
-                // erasing anything in this div so that it doesnt keep any from the previous click
+                // erasing anything in this div so that it doesnt keep any gifs from the previous click
                 $("#gifDisplay").empty(); 
                 //shows results of gifs
                 var results = response.data; 
                 if (results == "") {
+                	// if no results alert saying so
                     alert("There isn't a gif for this selected button");
                 }
                 for (var i = 0; i < results.length; i++) {
-					//div for the gifs to go inside
+					// new div for the gifs to go inside
                     var gifDiv = $("<div>"); 
                     gifDiv.addClass("gifDiv");
-                    // pulling rating of gif
+                    // get rating of gif
                     var gifRating = $("<p>").text("Rating: " + results[i].rating);
                     gifDiv.append(gifRating);
-                    // pulling gif
+                    // get gif image
                     var gifImage = $("<img>");
                     // still image stored into src of image
                     gifImage.attr("src", results[i].images.fixed_height_small_still.url); 
@@ -66,16 +68,15 @@ $(document).ready(function() {
                     gifImage.attr("data-state", "still"); 
                     gifImage.addClass("image");
                     gifDiv.append(gifImage);
-                    // pulling still image of gif
                     // adding div of gifs to gifsView div
                     $("#gifDisplay").prepend(gifDiv);
                 }
             });
     }
     // Calling Functions & Methods
-    displayButtons(); // displays list of actions already created
+    // Call back to display list of starterItem buttons
+    displayButtons(); 
     addNewButton();
-    // removeLastButton();
     // Document Event Listeners
     $(document).on("click", ".btn-success", displayGifs);
     $(document).on("click", ".image", function() {
