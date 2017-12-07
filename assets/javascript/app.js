@@ -2,7 +2,7 @@ $(document).ready(function() {
     // Starter items that are initially displayed after loading the page
     var starterItems = ["Darth Vader", "Thor", "Batman", "Luke Skywalker", "Superman", "Iron Man", "Hulk", "Aquaman", "Rey", "Kylo Renn"];
     console.log(starterItems);
-    // Function to display startItems as buttons
+    // Function to display starterItems as buttons
     function displayButtons() {
         // Empty anything that might be there to avoid duplicates
         $("#gifBtnDisplay").empty();
@@ -68,13 +68,12 @@ $(document).ready(function() {
                     gifImage.attr("data-state", "still"); 
                     gifImage.addClass("image");
                     gifDiv.append(gifImage);
-                    // adding div of gifs to gifsView div
+                    // adding gifDiv to gifsDisplay
                     $("#gifDisplay").prepend(gifDiv);
                 }
             });
     }
-    // Calling Functions & Methods
-    // Call back to display list of starterItem buttons
+    // Calling Functions
     displayButtons(); 
     addNewButton();
     // Document Event Listeners
