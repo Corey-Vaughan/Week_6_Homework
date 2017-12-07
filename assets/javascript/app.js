@@ -32,7 +32,7 @@ $(document).ready(function() {
     // Function that displays all of the gifs
     function displayGifs() {
         var item = $(this).attr("data-name");
-        var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + item + "&api_key=HYCdJ50ZyaNW8DSRW0IfTD10ovnLxp8W&limit=10";
+        var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + item + "&api_key=HYCdJ50ZyaNW8DSRW0IfTD10ovnLxp8W&limit=10";
         // Console log to make sure its completing the queryUrl with the search item
         console.log(queryURL); 
         $.ajax({
